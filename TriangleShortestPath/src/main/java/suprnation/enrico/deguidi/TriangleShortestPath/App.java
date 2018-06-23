@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
 public class App 
 {
     public static void main( String[] args )    {
-        System.out.println( "START" );
+        //System.out.println( "START" );
         
         BufferedReader br = null;
     	List<String>  listLine= new LinkedList<String>();
@@ -48,6 +48,7 @@ public class App
          }
     	return list;
     }
+
     
     
     public static Element shortestpath(List<String> lineList) {
