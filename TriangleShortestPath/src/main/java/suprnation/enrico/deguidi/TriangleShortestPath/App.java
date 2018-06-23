@@ -3,7 +3,9 @@ package suprnation.enrico.deguidi.TriangleShortestPath;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * Hello world!
@@ -34,7 +36,12 @@ public class App
     }
     
     public static  List splitText(String line) {
-    	return null;
+    	StringTokenizer tonkens = new StringTokenizer(line);
+    	List<Integer> list = new LinkedList<Integer>();
+    	 while (tonkens.hasMoreTokens()) {
+    		 list.add(Integer.parseInt(tonkens.nextToken()));
+         }
+    	return list;
     }
     
     
