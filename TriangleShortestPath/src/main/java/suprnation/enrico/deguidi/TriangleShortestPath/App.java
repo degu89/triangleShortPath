@@ -3,6 +3,7 @@ package suprnation.enrico.deguidi.TriangleShortestPath;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * Hello world!
@@ -30,6 +31,10 @@ public class App
         
         System.out.println( "END" );
 
+    }
+    
+    public static  List splitText(String line) {
+    	return null;
     }
     
     
