@@ -19,17 +19,19 @@ public class App
         BufferedReader br = null;
         try {
         	br= new BufferedReader(new InputStreamReader(System.in));
-        	String name;
-        	while ((name = br.readLine()) != null) {
-
-        		System.out.println( name );
+        	String line;
+        	List<String>  listLine= new LinkedList<String>();
+        	while ((line = br.readLine()) != null) {
+        		listLine.add(line);
+        		System.out.println( line );
         	}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-	        System.out.println( "ERROR" );
+	        System.out.println( "INPUT ERROR" );
 			e.printStackTrace();
 		}
-
+        
+        
         
         System.out.println( "END" );
 
@@ -42,6 +44,10 @@ public class App
     		 list.add(Integer.parseInt(tonkens.nextToken()));
          }
     	return list;
+    }
+    public static Element shortestpath(List<String> lineList) {
+    	return null;
+    	
     }
     
     
