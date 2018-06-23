@@ -19,12 +19,13 @@ public class App
         
         BufferedReader br = null;
     	List<String>  listLine= new LinkedList<String>();
-
+    	 LinkedList<LinkedElement> linkedElement = null;
         try {
         	br= new BufferedReader(new InputStreamReader(System.in));
         	String line;
         	while ((line = br.readLine()) != null) {
-        		listLine.add(0, line);
+        		//listLine.add(0, line);
+        		linkedElement=shortestpathLinked( line, linkedElement);
         	//	System.out.println( line );
         	}
 		} catch (IOException e) {
@@ -34,7 +35,9 @@ public class App
 		}
         
         
-        Element element = shortestpath(listLine);
+        //Element element = shortestpath(listLine);
+        Element element = shortestpathLinked(linkedElement);
+
         System.out.println( printResult(element));
         
 
@@ -48,8 +51,70 @@ public class App
          }
     	return list;
     }
-
     
+    public static Element shortestpathLinked(LinkedList<LinkedElement> finalList) {
+    	int minCost = finalList.getFirst().getCost();
+    	LinkedElement link = finalList.getFirst();
+    	for(LinkedElement element: finalList) {
+    		if (element.getCost()<minCost) {
+    			minCost = element.getCost();
+    			link =element;
+    		}
+    		
+    	}
+    	Element result = new Element();
+    	result.setCost(minCost);
+    	ArrayList<Integer> path = new ArrayList<Integer>() ;
+    	
+    	while(link!=null) {
+    		path.add(0, link.getValue());
+    		link = link.getPrevious();
+    	}
+
+    	result.setPath(path);
+    	return result;
+    	
+    }
+    
+    public static LinkedList<LinkedElement> shortestpathLinked(String line, LinkedList<LinkedElement> previousList) {
+    	LinkedList<LinkedElement>  currentLevel= new LinkedList<LinkedElement>();
+		List<Integer> splitList = splitText(line);
+		if (previousList ==null) {
+			LinkedElement e = new LinkedElement();
+			e.setCost(splitList.get(0));
+			e.setValue(splitList.get(0));
+			currentLevel.add(e);
+		}else {
+			int  i=0;
+			for (Integer node: splitList) {
+				LinkedElement e = new LinkedElement();
+				e.setValue(splitList.get(i));
+				if (i ==0) {
+					e.setCost(previousList.get(0).getCost()+node);
+					e.setPrevious(previousList.get(0));
+
+				}else if (i==previousList.size()){
+					e.setCost(previousList.get(i-1).getCost()+node);
+					e.setPrevious(previousList.get(i-1));
+				}else {
+					if (previousList.get(i-1).getCost()< previousList.get(i).getCost()) {
+						e.setCost(previousList.get(i-1).getCost()+node);
+						e.setPrevious(previousList.get(i-1));
+						
+					}else {
+						e.setCost(previousList.get(i).getCost()+node);
+						e.setPrevious(previousList.get(i));
+						
+					}
+					
+				}
+				i++;
+				currentLevel.add(e);	
+			}
+		}
+    	return currentLevel;
+    	
+    }
     
     public static Element shortestpath(List<String> lineList) {
     	Element[] elementArray = null;

@@ -22,6 +22,5 @@ public class TestPrint {
 		element.getPath().add(4000);
 		element.getPath().add(5000);
 		assertEquals("Minimal path is: 1 + 2 + 3000 + 4000 + 5000 = 12003",App.printResult(element));
-
 	}
 }
