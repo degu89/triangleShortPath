@@ -35,7 +35,7 @@ public class App
 
     }
     
-    public static  List splitText(String line) {
+    public static  List<Integer> splitText(String line) {
     	StringTokenizer tonkens = new StringTokenizer(line);
     	List<Integer> list = new LinkedList<Integer>();
     	 while (tonkens.hasMoreTokens()) {
@@ -43,6 +43,10 @@ public class App
          }
     	return list;
     }
+    
+    
+    
+    
     
     
 }
