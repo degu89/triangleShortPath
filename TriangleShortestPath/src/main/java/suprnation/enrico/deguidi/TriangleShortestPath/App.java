@@ -18,10 +18,11 @@ public class App
         System.out.println( "START" );
         
         BufferedReader br = null;
+    	List<String>  listLine= new LinkedList<String>();
+
         try {
         	br= new BufferedReader(new InputStreamReader(System.in));
         	String line;
-        	List<String>  listLine= new LinkedList<String>();
         	while ((line = br.readLine()) != null) {
         		listLine.add(0, line);
         		System.out.println( line );
@@ -33,8 +34,9 @@ public class App
 		}
         
         
+        Element element = shortestpath(listLine);
+        System.out.println( printResult(element));
         
-        System.out.println( "END" );
 
     }
     
@@ -83,6 +85,21 @@ public class App
     	
     	return elementArray[0];
     	
+    }
+    public static String printResult(Element element) {
+    	String result = "Minimal path is:";
+    	boolean printPlus = false;
+    	for(Integer i:element.getPath()) {
+    		if (printPlus) 
+    			result+=" + "+ i;
+    		else {
+    			result+=" "+ i;
+    			printPlus= true;
+    		}
+    	}
+    	 result+=" = "+element.getCost();
+
+    	return result;
     }
     
     
