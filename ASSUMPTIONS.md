@@ -8,6 +8,7 @@ The impust is a triangle, like:
 
 Each element, is a positive integer number (it should be work also for negative numbers )
 The path always begins from the first upside element and end in one of the last line elements
+The total cost is less then max integer (2147483647)
 
 
 
