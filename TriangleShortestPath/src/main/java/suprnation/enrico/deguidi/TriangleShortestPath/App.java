@@ -3,6 +3,7 @@ package suprnation.enrico.deguidi.TriangleShortestPath;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -22,7 +23,7 @@ public class App
         	String line;
         	List<String>  listLine= new LinkedList<String>();
         	while ((line = br.readLine()) != null) {
-        		listLine.add(line);
+        		listLine.add(0, line);
         		System.out.println( line );
         	}
 		} catch (IOException e) {
@@ -45,8 +46,42 @@ public class App
          }
     	return list;
     }
+    
+    
     public static Element shortestpath(List<String> lineList) {
-    	return null;
+    	Element[] elementArray = null;
+    	for(String s: lineList) {
+    		List<Integer> splitList = splitText(s);
+    		if(elementArray == null) {
+    			elementArray= new Element[splitList.size()];
+    			int  i=0;
+    			for (Integer node: splitList) {
+    				Element e = new Element();
+    				e.setCost(node);
+    				e.setPath(new LinkedList<Integer>());
+    				e.getPath().add(node);
+        			elementArray[i]=e;
+        			i++;
+    			}
+    		}else {
+    			int i =0;
+    			for (Integer node: splitList) {
+    				if (elementArray[i].getCost()<elementArray[i+1].getCost()) {
+    					elementArray[i].setCost(elementArray[i].getCost()+node);
+    					elementArray[i].getPath().add(0,node);
+    				}else {
+    					elementArray[i].setCost(elementArray[i+1].getCost()+node);
+    					elementArray[i].setPath(new LinkedList<Integer>(elementArray[i+1].getPath()));
+    					elementArray[i].getPath().add(0,node);
+    				}
+    				i++;
+    			}
+    		}
+    		
+    		
+    	}
+    	
+    	return elementArray[0];
     	
     }
     

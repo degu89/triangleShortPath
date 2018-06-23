@@ -13,7 +13,7 @@ public class TestShortestPath {
 	final static String line1= "1 2";
 	final static String line2= "3 4 5";
 	final static String line3= "6 7 8 9";
-	final static String line4= "10 11 12 13";
+	final static String line4= "10 11 12 13 14";
 
 	@Test
 	public void testShortPath1(){
@@ -31,13 +31,14 @@ public class TestShortestPath {
 	@Test
 	public void testShortPath4(){
 		LinkedList<String> list = new LinkedList<String>();
-		list.add(line0);
-		list.add(line1);
-		list.add(line2);
-		list.add(line3);
 		list.add(line4);
+		list.add(line3);
+		list.add(line2);
+		list.add(line1);
+		list.add(line0);
 
 		Element result = App.shortestpath(list);
+
 		assertNotNull(result);
 		assertEquals(20,result.getCost().intValue());
 		assertEquals(0,result.getPath().get(0).intValue());
