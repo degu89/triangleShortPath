@@ -25,7 +25,7 @@ public class App
         	String line;
         	while ((line = br.readLine()) != null) {
         		listLine.add(0, line);
-        		System.out.println( line );
+        	//	System.out.println( line );
         	}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
