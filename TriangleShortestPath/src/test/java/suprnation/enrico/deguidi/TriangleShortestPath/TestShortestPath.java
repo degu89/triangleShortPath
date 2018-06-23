@@ -47,7 +47,6 @@ public class TestShortestPath {
 		assertEquals(6,result.getPath().get(3).intValue());
 		assertEquals(10,result.getPath().get(4).intValue());
 
-		
 
 	}
 

@@ -13,7 +13,7 @@ public class TestSplit {
 		List<Integer> list = App.splitText("1 2 3 4 5 6");
 		assertEquals(6,list.size());
 	}
-	
+	@Test
 	public void testSplitElemet(){
 		List<Integer> list = App.splitText("1 2 3 4 5 6");
 		assertEquals(1,list.get(0).intValue());
