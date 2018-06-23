@@ -13,5 +13,16 @@ public class TestSplit {
 		List<Integer> list = App.splitText("1 2 3 4 5 6");
 		assertEquals(6,list.size());
 	}
+	
+	public void testSplitElemet(){
+		List<Integer> list = App.splitText("1 2 3 4 5 6");
+		assertEquals(1,list.get(0).intValue());
+		assertEquals(2,list.get(1).intValue());
+		assertEquals(3,list.get(2).intValue());
+		assertEquals(4,list.get(3).intValue());
+		assertEquals(5,list.get(4).intValue());
+		assertEquals(6,list.get(5).intValue());
+
+	}
 
 }
